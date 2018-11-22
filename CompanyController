@@ -1,0 +1,86 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Auth;
+use App\Company;
+use App\Asset;
+use DB;
+
+class CompanyController extends Controller
+{
+    public function index() {
+    	if (Auth::check()) {
+			$companies = DB::table('companies')
+			->where('user_id', Auth::user()->id)
+			->paginate(10);
+			
+			return view('/companyList', compact('companies'));
+		} else {
+			return view('/companyList');
+		}
+    }
+	
+	public function retrieve($id) {//Company $company
+    	$company = DB::table('companies')
+        ->select('*')
+        ->where('id', $id)
+        ->first();
+		
+		$assets = DB::table('assets')
+		->select('*')
+		->where('company_id', $id)
+		->paginate(10);
+		
+		return view('company', compact('company', 'assets'));
+    }
+
+    public function create(Request $request) {
+		$request->validate([
+			'name' => 'bail|required',
+			'email' => 'nullable',
+			'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			'website' => 'nullable',
+		]);
+		
+		$imgName = "";
+		$validSize = true;
+		if ($request->hasFile('logo')) {
+			$image = $request->file('logo');
+			list($width, $height) = getimagesize($image);
+			
+			$validSize = ($width >= 100 && $height >= 100) ? true : false;
+			if ($validSize) {
+				$imgName = time().'.'.$image->getClientOriginalExtension();
+				$destinationPath = public_path('/images');
+				$image->move($destinationPath, $imgName);
+			}
+		}
+		
+    	$company = new Company();
+    	$company->name = $request->name;
+    	$company->email = (isset($request->email)) ? $request->email : "";
+    	$company->logo = ($validSize) ? $imgName : "";
+		$company->website = (isset($request->website)) ? $request->website : "";
+		$company->user_id = Auth::user()->id;
+    	$company->save();
+    	return redirect()->action('CompanyController@index');
+    }
+	
+	public function createAsset(Request $request, $id) {
+		$request->validate([
+			'description' => 'bail|required',
+			'model' => 'bail|required|unique:assets',
+			'value' => 'bail|required',
+		]);
+		
+		$asset = new Asset();
+		$asset->description = $request->description;
+		$asset->model = $request->model;
+		$asset->value = $request->value;
+		$asset->company_id = $id;
+		$asset->save();
+		return redirect()->action('CompanyController@retrieve', ['id' => $id]);
+	}
+}
