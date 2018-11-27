@@ -1,0 +1,331 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+html {
+	width:100%;
+	height:100%;
+	background-color:rgb(240,240,240);
+	overflow:hidden;
+}
+
+body {
+	position:relative;
+	height:100%;
+	width:70%;
+	left:15%;
+	background:rgb(255,255,255);
+	box-shadow:0px 0px 25px 1px rgb(50,50,50);
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+aside {
+	position:relative;
+	float:right;
+	right:0;
+	padding:10px;
+	background-color:rgb(80,80,80);
+	z-index:11;
+}
+
+aside a {
+	color:rgb(240,240,240);
+	font-size:120%;
+	text-decoration:none;
+}
+
+h2 {
+	position:relative;
+	margin-top:5%;
+	color:rgb(60,60,60);
+	font-size:200%;
+	text-align:center;
+}
+
+form {
+	position:relative;
+	left:15%;
+	width:70%;
+}
+
+form table {
+	position:relative;
+	width:90%;
+	left:5%;
+	color:rgb(40,40,40);
+}
+
+form table td {
+	position:relative;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+form table tr td:nth-child(1) {
+	font-size:115%;
+	min-width:35%;
+}
+
+form table tr td:nth-child(2) {
+	text-align:center;
+}
+
+form input, textarea {
+	position:relative;
+	width:70%;
+	padding:5px;
+	border-radius:5px;
+	font-size:110%;
+	border:solid 1px lightgrey;
+	color:rgb(60,60,60);
+}
+
+form input[type='file'] {
+	font-size:100%;
+}
+
+form table span {
+	color:red;
+}
+
+form table span text {
+	color:rgb(150,150,150);
+}
+
+form input[type='button'],
+form button {
+	position:relative;
+	background-color:rgb(220,250,50);
+	color:rgb(80,80,80);
+	padding:5px;
+	border:none;
+	font-size:100%;
+	left:5%;
+	width:30%;
+	text-align:center;
+}
+
+form input[type='button'] {
+	display:none;
+}
+
+.container {
+	width:100%;
+	left:0;
+}
+
+.companiesList {
+	position:absolute;
+	display:block;
+	top:0;
+	left:0;
+	z-index:10;
+	padding:10px;
+	color:rgb(80,80,80);
+	background-color:rgb(220,250,50);
+	text-decoration:none;
+	font-size:120%;
+}
+
+.companyDetails {
+	position:relative;
+	width:100%;
+	background:linear-gradient(rgb(210,210,210), rgb(230,230,230), rgb(240,240,240));
+	border-top:solid 5px rgb(220,250,50);
+}
+
+.companyDetails table {
+	position:relative;
+	width:90%;
+	left:5%;
+	left:0;
+}
+
+.companyDetails table td:nth-child(2) {
+	min-width:40%;
+}
+
+.companyDetails table td:nth-child(1) {
+	min-width:33%;
+}
+
+.companyDetails table td:nth-child(3) {
+	text-align:center;	
+}
+
+.companyDetails td {
+	padding-top:1px;
+	padding-bottom:1px;
+}
+
+.companyDetails #cancel {
+	float:left;
+}
+
+.companyDetails #save {
+	float:right;
+}
+
+.companyDetails input {
+	font-size:90%;
+}
+
+.companyDetails input[type='button'] {
+	color:rgb(60,60,60);
+	padding:3px;
+	width:30%;
+}
+
+.companyDetails #originalLogo {
+	margin-left:15%;
+}
+
+.companyDetails #originalName {
+	color:rgb(40,40,40);
+	font-size:180%;
+	margin-left:15%;
+}
+
+.companyDetails #originalEmail, .companyDetails #originalWebsite {
+	color:rgb(90,90,90);
+	font-size:110%;
+	text-align:left;
+	margin-left:15%;
+}
+
+.createAsset {
+	position:relative;
+	background-color:rgb(40,40,40);
+	color:rgb(200,200,200);
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.createAsset table {
+	width:50%;
+	left:25%;
+}
+
+
+
+.createAsset input, .createAsset textarea {
+	background-color:rgb(80,80,80);
+	color:rgb(200,200,200);
+}
+
+.createAsset td {
+	color:rgb(200,200,200);
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+.createAsset td:nth-child(1) {
+	font-size:120%;
+}
+
+.createAsset td:nth-child(2) {
+	text-align:center;
+}
+
+.createAsset input[type='text'] {
+	font-size:90%;
+}
+
+.createAsset input[type='button'] {
+	color:rgb(80,80,80);
+	padding:3px;
+	width:40%;
+	font-size:90%;
+}
+
+.createAsset #addedAsset {
+	text-align:center;
+	font-size:130%;
+	color:rgb(220,250,50);
+	display:none;
+}
+
+.assetTable {
+	position:relative;
+	width:90%;
+	left:5%;
+}
+
+.assetTable thead th {
+	color:rgb(60,60,60);
+	font-size:130%;
+	border-bottom:solid 1px rgb(80,80,80);
+	padding-top:7px;
+	padding-bottom:7px;
+}
+
+.assetTable tbody {
+	color:rgb(100,100,100);
+	font-size:110%;
+}
+
+.assetTable tbody tr:nth-child(even) {
+	background-color:rgb(230,230,230);
+}
+
+.assetTable tbody td {
+	padding-top:7px;
+	padding-bottom:7px;
+	text-align:center;
+}
+
+.assetTable .deleteButton {
+	text-align:center;
+}
+
+.assetTable input[type='button'] {
+	padding:3px;
+	color:rgb(80,80,80);
+	background-color:rgb(255,255,255);
+	border:solid 1px rgb(80,80,80);
+	border-radius:5px;
+}
+
+#edit, #save {
+	float:right;
+}
+
+#submitAsset {
+	display:block;
+	float:right;
+}
+
+textarea {
+	resize:none;
+	overflow:auto;
+}
+
+button, input[type='button'], input[type='submit'] {
+	cursor:pointer;
+}
+
+.paginationButtons {
+	position:relative;
+	width:30%;
+	left:35%;
+}
+
+#left, #right {
+	position:relative;
+	display:none;
+	border:none;
+	border-radius:5px;
+	font-size:140%;
+	padding:7px;
+	background-color:rgb(220,250,50);
+}
+
+#left {
+	float:left;
+}
+
+#right {
+	float:right;
+}
